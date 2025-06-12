@@ -1,0 +1,16 @@
+# Build outputs
+node_modules
+
+# IDE/editor folders
+.vscode
+
+# Logs and cache
+*.log
+*.tsbuildinfo
+
+# Git
+.git
+.gitignore
+
+# Env files (optional)
+# .env.*

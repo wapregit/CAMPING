@@ -1,0 +1,21 @@
+# =========================
+# Global ignores for context
+# =========================
+node_modules
+dist
+.vscode
+*.log
+
+# Git stuff
+.git
+.gitignore
+
+# Docs
+README.md
+docker-compose.override.yml
+
+# Optional - don't ignore .env if Dockerfile needs it
+# But still good to block unknown ones
+# ❗ Allow Dockerfile to COPY them explicitly
+# .env
+# .env.*

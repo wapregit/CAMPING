@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+
+  runtime                = "nodejs"
+  moduleFormat           = "esm"
+  generatedFileExtension = "ts"
+  importFileExtension    = "ts"
+  binaryTargets          = ["native", "linux-musl", "debian-openssl-3.0.x", "debian-openssl-1.1.x", "windows"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id          Int        @id @default(autoincrement())
+  clerkId     String     @unique
+  firstName   String
+  lastName    String
+  userName    String
+  userEmail   String
+  userImage   String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  landmarksId Landmark[]
+}
+
+model Landmark {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  price       Int
+  description String
+  category    String
+  lat         Float
+  lng         Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  profile     Profile  @relation(fields: [profileId], references: [clerkId])
+  profileId   String
+}

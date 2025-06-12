@@ -1,0 +1,44 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/server.js",
+  "description": "",
+  "scripts": {
+    "dev": "concurrently -k -n \"BUILD,NODE\" -c \"yellow,cyan\" \"npm run dev:build\" \"npm run dev:watch\"",
+    "dev:build": "npm run prebuild && tsup --watch",
+    "dev:watch": "wait-on dist/server.js && nodemon dist/server.js --watch dist",
+    "prebuild": "prisma generate && cpy 'generated/**/*' dist --parents",
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@clerk/express": "^1.4.8",
+    "@prisma/client": "^6.9.0",
+    "axios": "^1.8.4",
+    "cloudinary": "^2.6.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "extensionless": "^1.9.9",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.15.2",
+    "concurrently": "^9.1.2",
+    "cpy-cli": "^5.0.0",
+    "nodemon": "^3.1.9",
+    "prisma": "^6.9.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "wait-on": "^8.0.3"
+  }
+}

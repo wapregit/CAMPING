@@ -1,0 +1,10 @@
+{
+  "exec": "node dist/server.js",
+  "ext": "ts,js,json",
+  "watch": ["dist"],
+  "legacyWatch": true,
+  "restartable": "rs",
+  "signal": "SIGTERM",
+  "delay": "500",
+  "verbose": true
+}

@@ -1,0 +1,24 @@
+# Node deps
+node_modules
+
+# Editor
+.vscode
+
+# Logs and cache
+*.log
+*.tsbuildinfo
+npm-debug.log
+
+# Git
+.git
+.gitignore
+
+# Docs
+README.md
+
+# OS/system
+.DS_Store
+
+# Env
+# .env.local
+# .env.*

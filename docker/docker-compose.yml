@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=camping
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    profiles: ["dev"]
+
+  server:
+    build:
+      context: ../server
+      dockerfile: ./dockerfiles/docker-server
+    container_name: server
+    image: local/server
+    ports:
+      - "5000:5000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ../server:/app:delegated
+      - node_modules_server:/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - DATABASE_URL=mysql://root:1234@mysql:3306/camping
+    command: sh -c "npm install && npm run dev"
+    profiles: ["dev"]
+
+  client:
+    build:
+      context: ../client
+      dockerfile: ./dockerfiles/docker-client
+    container_name: client
+    image: local/client
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    volumes:
+      - ../client:/app:delegated
+      - node_modules_client:/app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: sh -c "npm install && npm run dev -- --host"
+    profiles: ["dev"]
+
+volumes:
+  mysql-data:
+  node_modules_server:
+  node_modules_client:

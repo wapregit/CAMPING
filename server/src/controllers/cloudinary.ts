@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'src/express';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

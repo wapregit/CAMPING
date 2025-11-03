@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'src/express';
 
 import prisma from '../config/prisma';
 

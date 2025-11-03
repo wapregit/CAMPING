@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from 'url';
 import { clerkMiddleware } from '@clerk/express';
 import cors from 'cors';
 import 'dotenv/config';
-import express from 'express';
+import express from 'src/express';
 import morgan from 'morgan';
 
 import { errorHandler } from './middleware/errorHandler';

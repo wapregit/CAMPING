@@ -1,4 +1,4 @@
-import express from 'express';
+import express from 'src/express';
 
 import { createCamping, deleteCamping, listCamping, readCamping, updateCamping } from '../controllers/camping';
 import { authCheck } from '../middleware/auth';

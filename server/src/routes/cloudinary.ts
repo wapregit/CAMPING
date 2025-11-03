@@ -1,5 +1,5 @@
-import { uploadImage } from 'controllers/cloudinary';
-import express from 'express';
+import { uploadImage } from 'src/controllers/cloudinary';
+import express from 'src/express';
 
 import { authCheck } from '../middleware/auth';
 

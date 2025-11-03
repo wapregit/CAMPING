@@ -1,4 +1,4 @@
-import express from 'express';
+import express from 'src/express';
 
 import { getProfile, upsertProfile } from '../controllers/profile';
 import { authCheck } from '../middleware/auth';

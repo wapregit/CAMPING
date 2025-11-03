@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
-import renderError from 'utils/renderError';
+import { NextFunction, Request, Response } from 'src/express';
+import renderError from 'src/utils/renderError';
 
 import prisma from '../config/prisma';
 

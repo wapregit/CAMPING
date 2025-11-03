@@ -1,5 +1,5 @@
 import { clerkClient, getAuth } from '@clerk/express';
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'src/express';
 
 import renderError from '../utils/renderError';
 

@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'src/express';
 
 export const errorHandler = (error: any, req: Request, res: Response, _next: NextFunction) => {
   const status = typeof error?.statusCode === 'number' ? error.statusCode : 500;
